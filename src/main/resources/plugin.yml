@@ -1,0 +1,8 @@
+name: DivineAnnouncments
+version: 1.10.2.0.1
+main: pw.spdarklord.divineannoucments.DivineAnnouncments
+description: Giving you announcments!
+commands:
+    divineannouncment:
+        description: DivineAnnouncments core command
+        aliases: [da,divinea]
