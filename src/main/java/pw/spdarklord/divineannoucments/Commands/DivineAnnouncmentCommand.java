@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import pw.spdarklord.divineannoucments.Utils.BungeeUtils;
 import pw.spdarklord.divineannoucments.Utils.Chat;
 
 /**
@@ -24,12 +25,12 @@ public class DivineAnnouncmentCommand implements CommandExecutor {
             }
             if (strings.length == 1) {
                 if (strings[0].equalsIgnoreCase("list")) {
-                    Chat.sendMessage(commandSender, "Get all message from database");
+                    BungeeUtils.requestList("listall", 0, commandSender.getName());
                 }
             }
             if (strings.length > 1) {
                 if (strings[0].equalsIgnoreCase("list")) {
-                    Chat.sendMessage(commandSender, "Get message " + strings[1] + " from database");
+                    BungeeUtils.requestList("list", Integer.parseInt(strings[1]), commandSender.getName());
                     return false;
                 }
                 if (strings[0].equalsIgnoreCase("add")){
@@ -40,15 +41,14 @@ public class DivineAnnouncmentCommand implements CommandExecutor {
                             sb.append(strings[i]).append(" ");
                         }
                         String formedS = sb.toString();
-                        Chat.sendMessage(commandSender, "Send " + formedS + "to database at id " + strings[1] );
-
+                        BungeeUtils.addMessage("addID", Integer.parseInt(strings[1]), formedS);
                     }catch (NumberFormatException e){
                         StringBuilder sb = new StringBuilder();
                         for(int i=1; i<strings.length; i++){ // change 1
                             sb.append(strings[i]).append(" ");
                         }
                         String formedS = sb.toString();
-                        Chat.sendMessage(commandSender, "Send " + formedS + "to database");
+                        BungeeUtils.addMessage("add", 0, formedS);
                     }
                 }else {
                     Chat.sendRaw(commandSender, "&CInsufficent args");
