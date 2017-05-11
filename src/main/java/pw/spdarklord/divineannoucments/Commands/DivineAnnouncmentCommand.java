@@ -11,9 +11,13 @@ import pw.spdarklord.divineannoucments.Utils.Chat;
 /**
  * Created by Thomas on 08/05/2017.
  */
+//Implement code from the Spigot class Command Executor
 public class DivineAnnouncmentCommand implements CommandExecutor {
 
+    //
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+
+
 
         if (command.getName().equalsIgnoreCase("divineannouncment")) {
             if (strings.length == 0) {
